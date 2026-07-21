@@ -1,0 +1,254 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+
+body{
+    background:#f8fafc;
+    color:#333;
+}
+
+
+/* Navbar */
+
+.navbar{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 60px;
+    background:#1e3a8a;
+}
+
+
+.logo{
+
+    color:white;
+    font-size:28px;
+    font-weight:700;
+
+}
+
+
+.nav-links{
+
+    display:flex;
+    list-style:none;
+    gap:25px;
+
+}
+
+
+.nav-links a{
+
+    color:white;
+    text-decoration:none;
+    font-weight:500;
+
+}
+
+
+.nav-links a:hover{
+
+    color:#93c5fd;
+
+}
+
+
+
+/* Hero Section */
+
+
+.hero{
+
+    min-height:80vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px;
+
+    background:
+    linear-gradient(
+    rgba(30,58,138,0.8),
+    rgba(37,99,235,0.8)
+    );
+
+    color:white;
+
+}
+
+
+
+.hero-content h1{
+
+    font-size:45px;
+    margin-bottom:20px;
+
+}
+
+
+
+.hero-content p{
+
+    font-size:18px;
+    max-width:600px;
+    margin:auto;
+
+}
+
+
+
+.btn{
+
+    display:inline-block;
+    margin-top:30px;
+    padding:15px 35px;
+    background:white;
+    color:#1e3a8a;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:bold;
+
+}
+
+
+.btn:hover{
+
+    transform:scale(1.05);
+
+}
+
+
+
+/* Features */
+
+
+.features{
+
+    padding:60px 10%;
+    text-align:center;
+
+}
+
+
+.features h2{
+
+    font-size:35px;
+    margin-bottom:40px;
+
+}
+
+
+
+.cards{
+
+    display:flex;
+    gap:30px;
+    justify-content:center;
+    flex-wrap:wrap;
+
+}
+
+
+
+.card{
+
+    background:white;
+    padding:30px;
+    width:300px;
+    border-radius:15px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+
+}
+
+
+
+.card h3{
+
+    color:#1e3a8a;
+    margin-bottom:15px;
+
+}
+
+
+
+/* Statistics */
+
+
+.stats{
+
+    display:flex;
+    justify-content:center;
+    gap:60px;
+    padding:50px;
+    background:#1e3a8a;
+    color:white;
+    text-align:center;
+
+}
+
+
+.stats h2{
+
+    font-size:40px;
+
+}
+
+
+
+/* Footer */
+
+
+footer{
+
+    text-align:center;
+    padding:20px;
+    background:#111827;
+    color:white;
+
+}
+
+
+
+/* Mobile Responsive */
+
+
+@media(max-width:768px){
+
+
+.navbar{
+
+    flex-direction:column;
+    gap:20px;
+
+}
+
+
+.nav-links{
+
+    flex-direction:column;
+    text-align:center;
+
+}
+
+
+.hero-content h1{
+
+    font-size:32px;
+
+}
+
+
+.stats{
+
+    flex-direction:column;
+
+}
+
+
+}

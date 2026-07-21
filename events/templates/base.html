@@ -1,0 +1,88 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+        Event Registration System
+        {% endblock %}
+    </title>
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+</head>
+
+
+<body>
+
+
+<!-- Navigation Bar -->
+
+<header>
+
+<nav class="navbar">
+
+    <div class="logo">
+        EventPro
+    </div>
+
+
+    <ul class="nav-links">
+
+        <li><a href="/">Home</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Login</a></li>
+        <li><a href="/register/">Register</a></li>
+
+    </ul>
+
+
+</nav>
+
+</header>
+
+
+
+<!-- Page Content -->
+
+{% block content %}
+
+{% endblock %}
+
+
+
+<!-- Footer -->
+
+<footer>
+
+<p>
+© 2026 Event Registration System. All Rights Reserved.
+</p>
+
+</footer>
+
+
+
+<!-- JavaScript -->
+
+<script src="{% static 'js/script.js' %}"></script>
+
+
+</body>
+
+</html>

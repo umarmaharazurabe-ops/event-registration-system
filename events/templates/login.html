@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<section class="login-section">
+
+    <div class="login-container">
+
+        <div class="login-header">
+
+            <h1>Welcome Back</h1>
+
+            <p>Login to continue to Event Registration System</p>
+
+        </div>
+
+        <form action="" method="POST">
+
+            {% csrf_token %}
+
+            <div class="input-box">
+
+                <label>Username</label>
+
+                <input
+                    type="text"
+                    name="username"
+                    placeholder="Enter your username"
+                    required>
+
+            </div>
+
+            <div class="input-box">
+
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    required>
+
+            </div>
+
+            <button type="submit" class="login-btn">
+
+                Login
+
+            </button>
+
+        </form>
+
+        <div class="login-footer">
+
+            <p>
+
+                Don't have an account?
+
+                <a href="#">Register</a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
