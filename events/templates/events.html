@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Events
+{% endblock %}
+
+{% block content %}
+
+<section class="events-page">
+
+    <h1>Available Events</h1>
+
+
+    <!-- Search -->
+
+    <form method="GET" class="search-box">
+
+        <input 
+        type="text" 
+        name="q" 
+        placeholder="Search events..."
+        value="{{ request.GET.q }}"
+        >
+
+        <button type="submit">
+            Search
+        </button>
+
+    </form>
+
+
+    <!-- Filter -->
+
+    <form method="GET" class="filter-box">
+
+        <select name="category">
+
+            <option value="">
+                All Categories
+            </option>
+
+            <option value="wedding">
+                Wedding
+            </option>
+
+            <option value="party">
+                Party
+            </option>
+
+            <option value="conference">
+                Conference
+            </option>
+
+        </select>
+
+
+        <button type="submit">
+            Filter
+        </button>
+
+    </form>
+
+
+
+    <!-- Events Cards -->
+
+    <div class="event-cards">
+
+
+        {% for event in events %}
+
+
+        <div class="event-card">
+
+    {% if event.image %}
+        <img src="{{ event.image.url }}" class="card-image">
+    {% else %}
+        <img src="{% static 'images/default-event.jpg' %}" class="card-image">
+    {% endif %}
+
+    <h2>{{ event.title }}</h2>
+
+    <p>
+        <strong>Category:</strong> {{ event.category }}
+    </p>
+
+    <p>
+        <strong>Location:</strong> {{ event.location }}
+    </p>
+
+    <p>
+        <strong>Date:</strong> {{ event.date }}
+    </p>
+
+</div>
+
+
+        {% empty %}
+
+        <p>No events found.</p>
+
+        {% endfor %}
+
+
+    </div>
+
+
+</section>
+
+
+{% endblock %}

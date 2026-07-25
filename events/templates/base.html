@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,79 +8,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
-        {% block title %}
-        Event Registration System
-        {% endblock %}
+        {% block title %}Event Registration System{% endblock %}
     </title>
 
-
-    <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 
 </head>
 
-
 <body>
-
-
-<!-- Navigation Bar -->
 
 <header>
 
 <nav class="navbar">
 
-    <div class="logo">
-        EventPro
-    </div>
+<div class="container">
 
+<a href="{% url 'home' %}" class="logo">
+EventPro
+</a>
 
-    <ul class="nav-links">
+<ul class="nav-menu">
 
-        <li><a href="/">Home</a></li>
-        <li><a href="#">Events</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Login</a></li>
-        <li><a href="/register/">Register</a></li>
+<li><a href="{% url 'home' %}">Home</a></li>
 
-    </ul>
+<li><a href="{% url 'events' %}">Events</a></li>
 
+{% if request.user.is_authenticated %}
+
+<li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+
+<li><a href="{% url 'my_registrations' %}">My Registrations</a></li>
+
+<li><a href="{% url 'profile' %}">Profile</a></li>
+
+<li><a href="{% url 'logout' %}">Logout</a></li>
+
+{% else %}
+
+<li><a href="{% url 'login' %}">Login</a></li>
+
+<li><a href="{% url 'register' %}">Register</a></li>
+
+{% endif %}
+
+</ul>
+
+</div>
 
 </nav>
 
 </header>
 
+<main>
 
+{% if messages %}
 
-<!-- Page Content -->
+<div class="messages">
+
+{% for message in messages %}
+
+<div class="alert {{ message.tags }}">
+
+{{ message }}
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endif %}
 
 {% block content %}
 
 {% endblock %}
 
-
-
-<!-- Footer -->
+</main>
 
 <footer>
 
+<div class="container">
+
 <p>
-© 2026 Event Registration System. All Rights Reserved.
+
+© 2026 Event Registration System |
+Developed by Umar
+
 </p>
+
+</div>
 
 </footer>
 
-
-
-<!-- JavaScript -->
-
-<script src="{% static 'js/script.js' %}"></script>
-
+<script src="{% static 'js/main.js' %}"></script>
 
 </body>
 

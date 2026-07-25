@@ -1,0 +1,70 @@
+{% load static %}
+{% extends 'base.html' %}
+
+
+{% block title %}
+{{ event.title }} - Event Details
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="event-detail">
+
+
+    <div class="detail-card">
+      {% if event.image %}
+    <img src="{{ event.image.url }}" class="event-image">
+{% else %}
+    {% load static %}
+    <img src="{% static 'images/default-event.jpg' %}" class="event-image">
+{% endif %}
+
+        <h1>
+            {{ event.title }}
+        </h1>
+
+
+        <p>
+            <strong>Category:</strong>
+            {{ event.category }}
+        </p>
+
+
+        <p>
+            <strong>Location:</strong>
+            {{ event.location }}
+        </p>
+
+
+        <p>
+            <strong>Date:</strong>
+            {{ event.date }}
+        </p>
+
+
+        {% if event.description %}
+
+        <p>
+            <strong>Description:</strong>
+            <br>
+            {{ event.description }}
+        </p>
+
+        {% endif %}
+
+
+
+        <a href="{% url 'register_event' event.id %}" class="btn">
+    Register Now
+</a>
+
+
+    </div>
+
+
+</section>
+
+
+{% endblock %}

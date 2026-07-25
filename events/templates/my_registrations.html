@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+My Registrations
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="events-page">
+
+<h1>
+My Registered Events
+</h1>
+
+
+<div class="event-cards">
+
+
+{% for registration in registrations %}
+
+
+<div class="event-card">
+
+<h2>
+{{ registration.event.title }}
+</h2>
+
+
+<p>
+Location:
+{{ registration.event.location }}
+</p>
+
+
+<p>
+Date:
+{{ registration.event.date }}
+</p>
+<a href="{% url 'download_ticket' registration.id %}"
+   class="btn">
+    Download Ticket
+</a>
+
+</div>
+
+
+{% empty %}
+
+<p>
+You have no registrations yet.
+</p>
+
+
+{% endfor %}
+
+
+</div>
+
+
+</section>
+
+
+{% endblock %}

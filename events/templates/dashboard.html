@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="features">
+
+<h2>
+Dashboard
+</h2>
+
+
+<div class="cards">
+
+
+<div class="card">
+    <h2>
+Recent Events
+</h2>
+
+
+<div class="cards">
+
+{% for event in recent_events %}
+
+<div class="card">
+
+<h3>
+{{ event.title }}
+</h3>
+
+<p>
+{{ event.location }}
+</p>
+
+<p>
+{{ event.event_date }}
+</p>
+
+
+<a href="{% url 'event_detail' event.id %}" class="btn">
+View
+</a>
+
+
+</div>
+
+{% empty %}
+
+<p>
+No events available.
+</p>
+
+{% endfor %}
+
+
+</div>
+
+<h3>
+{{ total_events }}
+</h3>
+
+<p>
+Total Events
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+{{ total_registrations }}
+</h3>
+
+<p>
+Total Registrations
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+{{ total_users }}
+</h3>
+
+<p>
+Total Users
+</p>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+{% endblock %}

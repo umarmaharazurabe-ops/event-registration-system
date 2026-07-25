@@ -12,27 +12,20 @@ Home - EventPro
 
 <section class="hero">
 
-
     <div class="hero-content">
 
-        <h1>
-            Welcome to Event Registration System
-        </h1>
-
+        <h1>Event Registration System</h1>
 
         <p>
-            Register for events easily, manage your bookings,
-            and never miss an important occasion.
+            Welcome to the online event registration platform.
+            Browse events, register easily, and manage your registrations.
         </p>
 
-
-        <a href="#" class="btn">
-            Explore Events
+        <a href="{% url 'events' %}" class="btn">
+            Browse Events
         </a>
 
-
     </div>
-
 
 </section>
 
@@ -99,24 +92,20 @@ Home - EventPro
 
 <section class="stats">
 
-
     <div>
-        <h2>100+</h2>
+        <h2>{{ total_events }}</h2>
         <p>Events</p>
     </div>
 
-
     <div>
-        <h2>500+</h2>
+        <h2>{{ total_users }}</h2>
         <p>Users</p>
     </div>
 
-
     <div>
-        <h2>1000+</h2>
+        <h2>{{ total_registrations }}</h2>
         <p>Registrations</p>
     </div>
-
 
 </section>
 
