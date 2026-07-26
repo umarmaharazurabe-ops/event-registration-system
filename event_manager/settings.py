@@ -9,6 +9,11 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
+import os
+
+# This allows you to set ALLOWED_HOSTS via environment variables
+# It defaults to an empty list or your local environments if not set
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 from pathlib import Path
 
@@ -25,7 +30,16 @@ SECRET_KEY = 'django-insecure-m+7-fsx$e91w8@fw-a9gt&7ysfm&1y_f57#q0fkqws4-*g#s3&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+
+
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
+    "event-registration-system-zb59.onrender.com",
+
+
+]
 
 
 # Application definition
