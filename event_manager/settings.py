@@ -37,10 +37,8 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
     "event-registration-system-zb59.onrender.com",
-
-
+    "yayacaptain.pythonanywhere.com",
 ]
-
 
 # Application definition
 
@@ -141,3 +139,6 @@ STATICFILES_DIRS = [
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+LOGIN_URL = "/login/"
+LOGIN_REDIRECT_URL = "/dashboard/"
+LOGOUT_REDIRECT_URL = "/"

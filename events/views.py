@@ -12,7 +12,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import messages
-
+from .forms import EventForm
 
 def home(request):
     context = {
@@ -379,7 +379,108 @@ Time: {registration.event.event_time}
         width=120,
         height=120
     )
-
     pdf.save()
 
     return response
+
+@login_required
+def create_event(request):
+    if request.method == "POST":
+        form = EventForm(request.POST, request.FILES)
+        if form.is_valid():
+            event = form.save(commit=False)
+            event.created_by = request.user
+            event.save()
+            return redirect("events")
+    else:
+        form = EventForm()
+
+    return render(request, "create_event.html", {"form": form})
+
+
+@login_required
+def my_events(request):
+    events = Event.objects.filter(created_by=request.user).order_by("-created_at")
+
+    return render(
+        request,
+        "my_events.html",
+        {"events": events},
+    )
+
+@login_required
+def edit_event(request, id):
+    event = get_object_or_404(
+        Event,
+        id=id,
+        created_by=request.user,
+    )
+
+    if request.method == "POST":
+        form = EventForm(
+            request.POST,
+            request.FILES,
+            instance=event
+        )
+
+        if form.is_valid():
+            form.save()
+            return redirect("my_events")
+
+    else:
+        form = EventForm(instance=event)
+
+    return render(
+        request,
+        "create_event.html",
+        {"form": form}
+    )
+
+
+@login_required
+def delete_event(request, id):
+    event = get_object_or_404(
+        Event,
+        id=id,
+        created_by=request.user
+    )
+
+    if request.method == "POST":
+        event.delete()
+        return redirect("my_events")
+
+    return render(
+        request,
+        "delete_event.html",
+        {"event": event}
+    )
+    from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect, get_object_or_404
+from .forms import EventForm
+from .models import Event
+
+
+@login_required
+def create_event(request):
+
+    if request.method == "POST":
+        form = EventForm(
+            request.POST,
+            request.FILES
+        )
+
+        if form.is_valid():
+            event = form.save(commit=False)
+            event.created_by = request.user
+            event.save()
+
+            return redirect("events")
+
+    else:
+        form = EventForm()
+
+    return render(
+        request,
+        "create_event.html",
+        {"form": form}
+    )
